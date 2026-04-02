@@ -1,2 +1,16 @@
-GameHub is a self-hosted, full-stack web game platform. The goal is simple: build a hub where multiple original mini-games live under one roof, share a unified user account system, and track scores, streaks, and achievements across all of them.
-Each game is a standalone React component/page that plugs into the platform's shell — navigation, auth, leaderboards, and user profiles are handled globally so you never have to rebuild that plumbing per game.
+🎮 GameHub
+A personal browser-based game platform. Play original mini-games — no downloads, no installs.
+Tech Stack
+
+React — frontend
+Supabase — database, auth, leaderboards
+
+Games Planned
+
+Wordle
+Word Connect
+Crossword
+Snake
+Sudoku
+Memory Match
+...and more
