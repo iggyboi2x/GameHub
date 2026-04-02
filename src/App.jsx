@@ -4,6 +4,9 @@ import HomePage from './pages/HomePage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import ProfilePage from './pages/ProfilePage';
 import WordleGame from './games/wordle/index';
+import SnakeGame from './games/snake/index';
+import TwentyFortyEightGame from './games/2048/index';
+import SpaceShooterGame from './games/space-shooter/index';
 import './index.css';
 
 function GameShell({ children }) {
@@ -25,6 +28,18 @@ export default function App() {
         <Route
           path="/play/wordle"
           element={<GameShell><WordleGame /></GameShell>}
+        />
+        <Route
+          path="/play/snake"
+          element={<GameShell><SnakeGame /></GameShell>}
+        />
+        <Route
+          path="/play/2048"
+          element={<GameShell><TwentyFortyEightGame /></GameShell>}
+        />
+        <Route
+          path="/play/space-shooter"
+          element={<GameShell><SpaceShooterGame /></GameShell>}
         />
         <Route
           path="*"

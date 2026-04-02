@@ -1,0 +1,104 @@
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+  max-width: 420px;
+}
+
+.panel {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.scoreCard {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 14px 18px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.scoreLabel {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.button {
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: none;
+  background: var(--green);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  padding: 8px;
+}
+
+.cell {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.empty {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.head {
+  background: var(--green);
+}
+
+.body {
+  background: rgba(57, 255, 20, 0.55);
+}
+
+.food {
+  background: var(--pink);
+}
+
+.footer {
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+}
+
+.gameOver {
+  margin-top: 16px;
+  color: var(--pink);
+  font-weight: 700;
+}
