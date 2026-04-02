@@ -10,7 +10,4 @@ Games Planned
 Wordle
 Word Connect
 Crossword
-Snake
-Sudoku
-Memory Match
 ...and more
