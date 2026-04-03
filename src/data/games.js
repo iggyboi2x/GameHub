@@ -33,7 +33,7 @@ export const GAMES = [
     plays: '5.3k',
     icon: '+',
     hot: true,
-    available: false,
+    available: true,
   },
   {
     id: 4,

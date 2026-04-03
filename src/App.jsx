@@ -7,6 +7,7 @@ import WordleGame from './games/wordle/index';
 import SnakeGame from './games/snake/index';
 import TwentyFortyEightGame from './games/2048/index';
 import SpaceShooterGame from './games/space-shooter/index';
+import CrosswordGame from './games/crossword/index';
 import './index.css';
 
 function GameShell({ children }) {
@@ -40,6 +41,10 @@ export default function App() {
         <Route
           path="/play/space-shooter"
           element={<GameShell><SpaceShooterGame /></GameShell>}
+        />
+        <Route
+          path="/play/crossword"
+          element={<GameShell><CrosswordGame /></GameShell>}
         />
         <Route
           path="*"
