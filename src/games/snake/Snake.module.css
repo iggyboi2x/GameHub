@@ -18,12 +18,12 @@
 .title {
   font-size: 40px;
   font-weight: 800;
-  color: var(--green);
+  color: #22C55E;
 }
 
 .subtitle {
   margin-top: 8px;
-  color: var(--muted);
+  color: rgba(0, 0, 0, 0.55);
   max-width: 420px;
 }
 
@@ -35,8 +35,8 @@
 }
 
 .scoreCard {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   padding: 14px 18px;
   border-radius: 14px;
   text-align: center;
@@ -44,7 +44,7 @@
 
 .scoreLabel {
   display: block;
-  color: var(--muted);
+  color: rgba(0, 0, 0, 0.55);
   font-size: 12px;
   margin-bottom: 4px;
 }
@@ -58,47 +58,86 @@
   font-weight: 700;
 }
 
+.speedSelector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+}
+
+.speedLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.speedSelect {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.speedSelect:hover:not(:disabled) {
+  border-color: var(--green);
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.speedSelect:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(16, minmax(0, 1fr));
   gap: 4px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.04);
   border-radius: 18px;
   padding: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .cell {
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .empty {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .head {
-  background: var(--green);
+  background: #22C55E;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
 }
 
 .body {
-  background: rgba(57, 255, 20, 0.55);
+  background: rgba(34, 197, 94, 0.6);
 }
 
 .food {
-  background: var(--pink);
+  background: #FF2D78;
+  box-shadow: 0 0 8px rgba(255, 45, 120, 0.5);
 }
 
 .footer {
   padding: 18px 20px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--muted);
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .gameOver {
   margin-top: 16px;
-  color: var(--pink);
+  color: #FF2D78;
   font-weight: 700;
 }

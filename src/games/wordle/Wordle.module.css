@@ -9,13 +9,13 @@
 .title {
   font-size: 32px;
   font-weight: 800;
-  color: var(--pink);
+  color: #FF2D78;
   letter-spacing: -0.02em;
 }
 
 .sub {
   font-size: 14px;
-  color: var(--muted);
+  color: rgba(0, 0, 0, 0.55);
 }
 
 .comingSoon {

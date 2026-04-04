@@ -6,8 +6,8 @@
   flex-direction: column;
   gap: 16px;
   border-radius: 20px;
-  background: linear-gradient(160deg, rgba(9, 14, 30, 0.98) 0%, rgba(1, 9, 31, 0.86) 100%);
-  box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.5), 0 0 30px rgba(96, 138, 255, 0.3);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 247, 251, 0.95) 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .header {
@@ -21,13 +21,13 @@
 .title {
   font-size: 44px;
   font-weight: 900;
-  color: var(--cyan);
+  color: #00B8D4;
   letter-spacing: 0.8px;
 }
 
 .subtitle {
   margin-top: 6px;
-  color: var(--muted);
+  color: rgba(0, 0, 0, 0.55);
   max-width: 450px;
 }
 
@@ -39,8 +39,8 @@
 }
 
 .scoreCard {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   padding: 10px 15px;
   border-radius: 12px;
   text-align: center;
@@ -49,7 +49,7 @@
 
 .scoreLabel {
   display: block;
-  color: var(--muted);
+  color: rgba(0, 0, 0, 0.55);
   font-size: 11px;
   margin-bottom: 3px;
   text-transform: uppercase;
@@ -66,14 +66,14 @@
 }
 
 .button {
-  background: linear-gradient(145deg, rgba(0, 252, 223, 0.95), rgba(0, 175, 227, 0.9));
-  color: var(--bg);
+  background: linear-gradient(145deg, rgba(0, 184, 212, 0.95), rgba(0, 148, 189, 0.9));
+  color: #FFFFFF;
 }
 
 .helpButton {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: var(--cyan);
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #00B8D4;
   min-width: 40px;
   min-height: 40px;
   border-radius: 50%;
@@ -87,13 +87,13 @@
 .helpButton:hover,
 .toggleButton:hover {
   transform: translateY(-1px);
-  box-shadow: 0 0 16px rgba(0, 255, 255, 0.55);
+  box-shadow: 0 0 16px rgba(0, 184, 212, 0.35);
 }
 
 .toggleButton {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #1a1a2e;
 }
 
 .board {

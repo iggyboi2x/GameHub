@@ -2,7 +2,13 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import styles from './Snake.module.css';
 
 const GRID_SIZE = 16;
-const INITIAL_SPEED = 120;
+const SPEED_LEVELS = {
+  slow: { label: 'Slow', interval: 150 },
+  normal: { label: 'Normal', interval: 100 },
+  fast: { label: 'Fast', interval: 70 },
+  expert: { label: 'Expert', interval: 40 },
+};
+const DEFAULT_SPEED = 'normal';
 const KEY_MAP = {
   ArrowUp: { x: 0, y: -1 },
   ArrowDown: { x: 0, y: 1 },
@@ -42,11 +48,13 @@ export default function SnakeGame() {
   const [direction, setDirection] = useState({ x: 0, y: -1 });
   const [score, setScore] = useState(0);
   const [playing, setPlaying] = useState(true);
+  const [speed, setSpeed] = useState(DEFAULT_SPEED);
 
   const directionRef = useRef(direction);
   const snakeRef = useRef(snake);
   const foodRef = useRef(food);
   const playingRef = useRef(playing);
+  const speedRef = useRef(speed);
 
   useEffect(() => {
     directionRef.current = direction;
@@ -63,6 +71,10 @@ export default function SnakeGame() {
   useEffect(() => {
     playingRef.current = playing;
   }, [playing]);
+
+  useEffect(() => {
+    speedRef.current = speed;
+  }, [speed]);
 
   const resetGame = () => {
     const initial = [...initialSnake];
@@ -113,9 +125,11 @@ export default function SnakeGame() {
   };
 
   useEffect(() => {
-    const interval = window.setInterval(moveSnake, INITIAL_SPEED);
-    return () => window.clearInterval(interval);
-  }, []);
+    const currentSpeed = speedRef.current;
+    const interval = SPEED_LEVELS[currentSpeed].interval;
+    const gameInterval = window.setInterval(moveSnake, interval);
+    return () => window.clearInterval(gameInterval);
+  }, [speed]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -155,6 +169,22 @@ export default function SnakeGame() {
           <div className={styles.scoreCard}>
             <span className={styles.scoreLabel}>Score</span>
             <strong>{score}</strong>
+          </div>
+          <div className={styles.speedSelector}>
+            <label htmlFor="speed-select" className={styles.speedLabel}>Speed:</label>
+            <select
+              id="speed-select"
+              className={styles.speedSelect}
+              value={speed}
+              onChange={(e) => setSpeed(e.target.value)}
+              disabled={!playing}
+            >
+              {Object.entries(SPEED_LEVELS).map(([key, value]) => (
+                <option key={key} value={key}>
+                  {value.label}
+                </option>
+              ))}
+            </select>
           </div>
           <button type="button" className={styles.button} onClick={resetGame}>
             Restart

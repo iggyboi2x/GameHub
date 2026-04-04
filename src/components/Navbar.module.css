@@ -3,11 +3,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 18px 40px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10, 10, 20, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
 }
 
@@ -19,7 +19,7 @@
   font-weight: 800;
   letter-spacing: 0.04em;
   text-decoration: none;
-  color: var(--text);
+  color: #1a1a2e;
 }
 
 .logoIcon {
@@ -46,8 +46,8 @@
 
 .ghost {
   background: transparent;
-  border: 1px solid var(--border);
-  color: var(--muted);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.55);
   padding: 7px 16px;
   border-radius: 8px;
   font-size: 13px;
@@ -58,8 +58,8 @@
 
 .ghost:hover,
 .ghost.active {
-  border-color: var(--pink);
-  color: var(--text);
+  border-color: #FF2D78;
+  color: #1a1a2e;
 }
 
 .cta {

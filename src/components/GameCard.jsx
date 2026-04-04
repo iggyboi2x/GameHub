@@ -27,7 +27,13 @@ export default function GameCard({ game }) {
       {game.hot && <span className={styles.hotBadge}>HOT</span>}
       {!game.available && <span className={styles.soonBadge}>SOON</span>}
 
-      <div className={styles.icon}>{game.icon}</div>
+      {game.image ? (
+        <div className={styles.imageContainer}>
+          <img src={game.image} alt={game.title} className={styles.gameImage} />
+        </div>
+      ) : (
+        <div className={styles.icon}>{game.icon}</div>
+      )}
 
       <div className={styles.title}>{game.title}</div>
       <div className={styles.desc}>{game.desc}</div>
