@@ -15,6 +15,12 @@
   z-index: 0;
 }
 
+:root[data-theme="dark"] .bgGrid {
+  background-image:
+    linear-gradient(rgba(255, 45, 120, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 45, 120, 0.04) 1px, transparent 1px);
+}
+
 .orb1 {
   position: absolute;
   top: -120px;
@@ -27,13 +33,21 @@
   z-index: 0;
 }
 
+:root[data-theme="dark"] .orb1 {
+  background: radial-gradient(circle, rgba(255, 45, 120, 0.14) 0%, transparent 70%);
+}
+
 .orb2 {
   position: absolute;
   top: 60px;
   right: -100px;
   width: 340px;
   height: 340px;
-  border-radius: 50%;
+ 
+
+:root[data-theme="dark"] .orb2 {
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.09) 0%, transparent 70%);
+} border-radius: 50%;
   background: radial-gradient(circle, rgba(0, 184, 212, 0.06) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
@@ -55,7 +69,12 @@
   padding: 4px 14px;
   font-size: 10px;
   font-weight: 700;
-  color: #FF2D78;
+ 
+
+:root[data-theme="dark"] .liveBadge {
+  background: rgba(255, 45, 120, 0.13);
+  border: 1px solid rgba(255, 45, 120, 0.3);
+} color: #FF2D78;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -79,9 +98,17 @@
   font-size: clamp(32px, 5vw, 56px);
   font-weight: 800;
   line-height: 1.07;
-  letter-spacing: -0.02em;
-  margin: 0 0 16px;
-  color: #1a1a2e;
+:root[data-theme="dark"] .heading {
+  color: #ffffff;
+}
+
+.headingGhost {
+  -webkit-text-stroke: 1.5px rgba(26, 26, 46, 0.15);
+  color: transparent;
+}
+
+:root[data-theme="dark"] .headingGhost {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.22)
 }
 
 .headingGhost {

@@ -35,8 +35,8 @@
 }
 
 .scoreCard {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--bg2);
+  border: 1px solid var(--border);
   padding: 14px 18px;
   border-radius: 14px;
   text-align: center;
@@ -44,7 +44,7 @@
 
 .scoreLabel {
   display: block;
-  color: rgba(0, 0, 0, 0.55);
+  color: var(--muted);
   font-size: 12px;
   margin-bottom: 4px;
 }
@@ -88,6 +88,10 @@
   background: rgba(34, 197, 94, 0.08);
 }
 
+:root[data-theme="dark"] .speedSelect:hover:not(:disabled) {
+  background: rgba(34, 197, 94, 0.15);
+}
+
 .speedSelect:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -97,21 +101,21 @@
   display: grid;
   grid-template-columns: repeat(16, minmax(0, 1fr));
   gap: 4px;
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--bg2);
   border-radius: 18px;
   padding: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border);
 }
 
 .cell {
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 6px;
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--bg2);
 }
 
 .empty {
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--bg2);
 }
 
 .head {
@@ -131,9 +135,9 @@
 .footer {
   padding: 18px 20px;
   border-radius: 20px;
-  background: rgba(0, 0, 0, 0.04);
-  color: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--bg2);
+  color: var(--muted);
+  border: 1px solid var(--border);
 }
 
 .gameOver {

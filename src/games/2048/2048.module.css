@@ -35,8 +35,8 @@
 }
 
 .scoreCard {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--bg2);
+  border: 1px solid var(--border);
   padding: 14px 18px;
   border-radius: 14px;
   text-align: center;
@@ -44,7 +44,7 @@
 
 .scoreLabel {
   display: block;
-  color: rgba(0, 0, 0, 0.55);
+  color: var(--muted);
   font-size: 12px;
   margin-bottom: 4px;
 }
@@ -70,8 +70,8 @@
   aspect-ratio: 1 / 1;
   padding: 18px;
   border-radius: 20px;
-  background: rgba(0, 0, 0, 0.04);
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  background: var(--bg2);
+  box-shadow: inset 0 0 0 1px var(--border);
   overflow: hidden;
   --gap: 12px;
   --cell-size: calc((100% - var(--gap) * 3) / 4);
@@ -91,6 +91,10 @@
   aspect-ratio: 1 / 1;
   border-radius: 16px;
   background: rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="dark"] .backgroundCell {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .tile {
