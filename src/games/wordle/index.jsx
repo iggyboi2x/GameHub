@@ -6,11 +6,8 @@ const WORD_LENGTH = 5;
 const MAX_GUESSES = 6;
 const WORD_SET = new Set(WORDS);
 
-function getTodaysWord() {
-  const start = new Date('2024-01-01');
-  const today = new Date();
-  const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24));
-  return WORDS[diff % WORDS.length].toUpperCase();
+function getRandomWord() {
+  return WORDS[Math.floor(Math.random() * WORDS.length)].toUpperCase();
 }
 
 function evaluateGuess(guess, target) {
@@ -46,7 +43,7 @@ const KEYBOARD_ROWS = [
 ];
 
 export default function WordleGame() {
-  const [target] = useState(getTodaysWord);
+  const [target, setTarget] = useState(getRandomWord);
   const [guesses, setGuesses] = useState([]);
   const [current, setCurrent] = useState('');
   const [gameOver, setGameOver] = useState(false);
@@ -134,6 +131,7 @@ export default function WordleGame() {
   }, [handleKey]);
 
   const resetGame = () => {
+    setTarget(getRandomWord());
     setGuesses([]);
     setCurrent('');
     setGameOver(false);
