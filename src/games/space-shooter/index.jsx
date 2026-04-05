@@ -191,10 +191,46 @@ export default function SpaceShooterGame() {
         .map((bullet) => ({ ...bullet, y: bullet.y + 1 }))
         .filter((b) => b.y < GRID_HEIGHT);
 
-      // move enemies with sideways bounce
+      const currentEnemyMap = new Map();
+      enemiesRef.current
+        .filter((enemy) => enemy.alive)
+        .forEach((enemy) => currentEnemyMap.set(`${enemy.x}:${enemy.y}`, enemy));
+
+      const nextBulletsAfterHits = nextBullets.filter((bullet) => {
+        const collisionKey = `${bullet.x}:${bullet.y}`;
+        return !currentEnemyMap.has(collisionKey);
+      });
+
+      let scoreGain = 0;
+      let lostLive = 0;
+      const explosionSpawn = [];
+      const hitSpawn = [];
+
       let nextEnemies = enemiesRef.current
         .filter((enemy) => enemy.alive)
-        .map((enemy) => {
+        .reduce((acc, enemy) => {
+          const enemyKey = `${enemy.x}:${enemy.y}`;
+          const bulletHit = currentEnemyMap.has(enemyKey) && nextBullets.some((b) => `${b.x}:${b.y}` === enemyKey);
+          let enemyHp = enemy.hp;
+          if (bulletHit) {
+            enemyHp -= 1;
+            hitSpawn.push({ id: Date.now() + Math.random(), x: enemy.x, y: enemy.y, life: 6 });
+          }
+
+          if (enemyHp <= 0) {
+            const killValue = enemy.kind === 'bomber' ? 30 : enemy.kind === 'shooter' ? 18 : 10;
+            scoreGain += killValue;
+            playExplosionSound();
+            explosionSpawn.push({ id: Date.now() + Math.random(), x: enemy.x, y: enemy.y, life: 12 });
+            return acc;
+          }
+
+          if (enemy.y >= GRID_HEIGHT - 1) {
+            lostLive += 1;
+            explosionSpawn.push({ id: Date.now() + Math.random(), x: enemy.x, y: enemy.y, life: 14 });
+            return acc;
+          }
+
           let newX = enemy.x + enemy.direction;
           let direction = enemy.direction;
           if (newX < 0 || newX >= GRID_WIDTH) {
@@ -203,48 +239,11 @@ export default function SpaceShooterGame() {
           }
 
           const newY = enemy.y + (isEnemyDropFrame ? 1 : 0);
-          return { ...enemy, x: newX, y: newY, direction };
-        });
-
-      let scoreGain = 0;
-      let lostLive = 0;
-      const explosionSpawn = [];
-      const hitSpawn = [];
-
-      // bullet <-> enemy collision and enemy reach bottom
-      const enemyHitMap = new Map();
-      nextBullets.forEach((b) => enemyHitMap.set(`${b.x}:${b.y}`, b));
-
-      nextEnemies = nextEnemies.reduce((acc, enemy) => {
-        const enemyKey = `${enemy.x}:${enemy.y}`;
-        if (enemyHitMap.has(enemyKey)) {
-          const nextHp = enemy.hp - 1;
-          hitSpawn.push({ id: Date.now() + Math.random(), x: enemy.x, y: enemy.y, life: 6 });
-          if (nextHp <= 0) {
-            const killValue = enemy.kind === 'bomber' ? 30 : enemy.kind === 'shooter' ? 18 : 10;
-            scoreGain += killValue;
-            playExplosionSound();
-            explosionSpawn.push({ id: Date.now() + Math.random(), x: enemy.x, y: enemy.y, life: 12 });
-          } else {
-            acc.push({ ...enemy, hp: nextHp });
-          }
+          acc.push({ ...enemy, x: newX, y: newY, direction, hp: enemyHp });
           return acc;
-        }
+        }, []);
 
-        if (enemy.y >= GRID_HEIGHT - 1) {
-          lostLive += 1;
-          explosionSpawn.push({ id: Date.now() + Math.random(), x: enemy.x, y: enemy.y, life: 14 });
-          return acc;
-        }
-
-        acc.push(enemy);
-        return acc;
-      }, []);
-
-      const reducedBullets = nextBullets.filter((bullet) => {
-        const key = `${bullet.x}:${bullet.y}`;
-        return !enemyHitMap.has(key);
-      });
+      const reducedBullets = nextBulletsAfterHits;
 
       // enemy bullets hit player
       const playerHit = nextEnemyBullets.filter((b) => b.x === player.x && b.y === player.y);

@@ -47,7 +47,9 @@ export default function SnakeGame() {
   const [food, setFood] = useState(() => getRandomFood(initialSnake));
   const [direction, setDirection] = useState({ x: 0, y: -1 });
   const [score, setScore] = useState(0);
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
+  const [started, setStarted] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [speed, setSpeed] = useState(DEFAULT_SPEED);
 
   const directionRef = useRef(direction);
@@ -82,6 +84,19 @@ export default function SnakeGame() {
     setFood(getRandomFood(initial));
     setDirection({ x: 0, y: -1 });
     setScore(0);
+    setPlaying(false);
+    setStarted(false);
+    setGameOver(false);
+  };
+
+  const startGame = () => {
+    const initial = [...initialSnake];
+    setSnake(initial);
+    setFood(getRandomFood(initial));
+    setDirection({ x: 0, y: -1 });
+    setScore(0);
+    setStarted(true);
+    setGameOver(false);
     setPlaying(true);
   };
 
@@ -105,6 +120,7 @@ export default function SnakeGame() {
 
     if (hitWall || collided) {
       setPlaying(false);
+      setGameOver(true);
       return;
     }
 
@@ -125,11 +141,14 @@ export default function SnakeGame() {
   };
 
   useEffect(() => {
+    if (!playing) {
+      return undefined;
+    }
     const currentSpeed = speedRef.current;
     const interval = SPEED_LEVELS[currentSpeed].interval;
     const gameInterval = window.setInterval(moveSnake, interval);
     return () => window.clearInterval(gameInterval);
-  }, [speed]);
+  }, [speed, playing]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -186,8 +205,16 @@ export default function SnakeGame() {
               ))}
             </select>
           </div>
+          <button
+            type="button"
+            className={styles.button}
+            onClick={startGame}
+            disabled={playing}
+          >
+            {gameOver ? 'Play Again' : 'Start'}
+          </button>
           <button type="button" className={styles.button} onClick={resetGame}>
-            Restart
+            Reset
           </button>
         </div>
       </div>
@@ -199,8 +226,12 @@ export default function SnakeGame() {
       </div>
 
       <div className={styles.footer}>
-        <p>Use arrow keys to change direction. Don’t hit the wall or your tail.</p>
-        {!playing && <div className={styles.gameOver}>Game over — press restart to play again.</div>}
+        <p>
+          {started
+            ? 'Use arrow keys to change direction. Don’t hit the wall or your tail.'
+            : 'Select your speed, then press Start to begin.'}
+        </p>
+        {gameOver && <div className={styles.gameOver}>Game over — press Play Again or Reset.</div>}
       </div>
     </div>
   );

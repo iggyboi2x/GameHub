@@ -5,13 +5,29 @@ import styles from './Navbar.module.css';
 export default function Navbar() {
   const location = useLocation();
   const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved || 'light';
+    if (typeof window === 'undefined') {
+      return 'light';
+    }
+
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') {
+        return saved;
+      }
+    } catch (error) {
+      // Ignore localStorage errors.
+    }
+
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (error) {
+      // Ignore localStorage errors.
+    }
   }, [theme]);
 
   const toggleTheme = () => {

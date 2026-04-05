@@ -4,6 +4,7 @@ import styles from './Wordle.module.css';
 
 const WORD_LENGTH = 5;
 const MAX_GUESSES = 6;
+const WORD_SET = new Set(WORDS);
 
 function getTodaysWord() {
   const start = new Date('2024-01-01');
@@ -71,20 +72,21 @@ export default function WordleGame() {
   };
 
   const submitGuess = useCallback(() => {
-    if (current.length !== WORD_LENGTH) {
+    const guess = current.trim().toLowerCase();
+    if (guess.length !== WORD_LENGTH) {
       setShake(true);
       setTimeout(() => setShake(false), 500);
       showMessage('Not enough letters');
       return;
     }
-    if (!WORDS.includes(current.toLowerCase())) {
+    if (!WORD_SET.has(guess)) {
       setShake(true);
       setTimeout(() => setShake(false), 500);
       showMessage('Not in word list');
       return;
     }
 
-    const result = evaluateGuess(current, target);
+    const result = evaluateGuess(guess.toUpperCase(), target);
     const newGuess = { word: current, result };
     const newGuesses = [...guesses, newGuess];
     setGuesses(newGuesses);

@@ -8,6 +8,8 @@
   /* Light mode (default) */
   --bg: #FFFFFF;
   --bg2: #F5F7FB;
+  --bg-rgb: 255, 255, 255;
+  --bg2-rgb: 245, 247, 251;
   --border: rgba(0, 0, 0, 0.08);
   --text: #1a1a2e;
   --muted: rgba(0, 0, 0, 0.55);
@@ -25,6 +27,8 @@
   /* Dark mode */
   --bg: #0A0A14;
   --bg2: #111120;
+  --bg-rgb: 10, 10, 20;
+  --bg2-rgb: 17, 17, 32;
   --border: rgba(255, 255, 255, 0.08);
   --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.4);
