@@ -2,39 +2,230 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 48px 24px;
-  gap: 12px;
+  padding: 32px 20px 48px;
+  min-height: calc(100vh - 64px);
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 420px;
 }
 
 .title {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
-  color: #FF2D78;
+  color: var(--pink);
   letter-spacing: -0.02em;
 }
 
-.sub {
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.55);
+.subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
 }
 
-.comingSoon {
-  margin-top: 32px;
+.button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.button:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.message {
+  background: var(--text);
+  color: var(--bg);
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Board ── */
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.row {
+  display: flex;
+  gap: 6px;
+}
+
+.row.shake {
+  animation: shake 0.45s ease;
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  15%      { transform: translateX(-6px); }
+  30%      { transform: translateX(6px); }
+  45%      { transform: translateX(-4px); }
+  60%      { transform: translateX(4px); }
+  75%      { transform: translateX(-2px); }
+}
+
+.tile {
+  width: 58px;
+  height: 58px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+  color: var(--text);
+  text-transform: uppercase;
+  transition: border-color 0.1s;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+.tile.filled {
+  border-color: var(--muted);
+  animation: pop 0.1s ease;
+}
+
+@keyframes pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.tile.flip {
+  animation: flip 0.5s ease forwards;
+}
+
+@keyframes flip {
+  0%   { transform: rotateX(0deg); }
+  50%  { transform: rotateX(-90deg); }
+  100% { transform: rotateX(0deg); }
+}
+
+/* Tile states — applied after flip */
+.tile.correct {
+  background: #538d4e;
+  border-color: #538d4e;
+  color: #fff;
+}
+
+.tile.present {
+  background: #b59f3b;
+  border-color: #b59f3b;
+  color: #fff;
+}
+
+.tile.absent {
+  background: #3a3a3c;
+  border-color: #3a3a3c;
+  color: #fff;
+}
+
+/* ── Keyboard ── */
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.keyRow {
+  display: flex;
+  gap: 5px;
+}
+
+.key {
+  height: 56px;
+  min-width: 40px;
+  padding: 0 6px;
+  border-radius: 6px;
+  border: none;
+  background: #818384;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.1s;
+  user-select: none;
+}
+
+.key:active {
+  transform: scale(0.94);
+}
+
+.keyWide {
+  min-width: 64px;
+  font-size: 11px;
+}
+
+.key.correct {
+  background: #538d4e;
+}
+
+.key.present {
+  background: #b59f3b;
+}
+
+.key.absent {
+  background: #3a3a3c;
+}
+
+/* ── Footer ── */
+.footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  font-size: 32px;
+  gap: 14px;
+  padding-top: 8px;
 }
 
-.comingSoon p {
+.winText {
+  font-size: 18px;
+  font-weight: 700;
+  color: #538d4e;
+}
+
+.loseText {
   font-size: 16px;
-  font-weight: 600;
-  color: var(--text);
+  color: var(--muted);
 }
 
-.hint {
-  font-size: 13px !important;
-  font-weight: 400 !important;
-  color: var(--muted) !important;
+.loseText strong {
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 480px) {
+  .tile { width: 50px; height: 50px; font-size: 18px; }
+  .key  { height: 48px; min-width: 32px; font-size: 11px; }
+  .keyWide { min-width: 52px; }
 }
