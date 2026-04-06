@@ -5,6 +5,8 @@ import LeaderboardPage from './pages/LeaderboardPage';
 import ProfilePage from './pages/ProfilePage';
 import WordleGame from './games/wordle/index';
 import SnakeGame from './games/snake/index';
+import TetrisGame from './games/tetris/index';
+import AnagramGame from './games/anagram/index';
 import TwentyFortyEightGame from './games/2048/index';
 import SpaceShooterGame from './games/space-shooter/index';
 import CrosswordGame from './games/crossword/index';
@@ -33,6 +35,14 @@ export default function App() {
         <Route
           path="/play/snake"
           element={<GameShell><SnakeGame /></GameShell>}
+        />
+        <Route
+          path="/play/anagram"
+          element={<GameShell><AnagramGame /></GameShell>}
+        />
+        <Route
+          path="/play/tetris"
+          element={<GameShell><TetrisGame /></GameShell>}
         />
         <Route
           path="/play/2048"

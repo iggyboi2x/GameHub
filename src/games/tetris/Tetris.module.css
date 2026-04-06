@@ -1,0 +1,169 @@
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2rem, 2.4vw, 3rem);
+  letter-spacing: -0.04em;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+.panel {
+  display: grid;
+  gap: 14px;
+  align-items: start;
+  width: min(100%, 320px);
+}
+
+.scoreCard {
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.scoreLabel {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.speedSelector {
+  display: grid;
+  gap: 8px;
+}
+
+.speedLabel {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.speedSelect,
+.button,
+.buttonSecondary {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.speedSelect {
+  appearance: none;
+  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+}
+
+.button {
+  background: linear-gradient(135deg, #8054ff 0%, #61e5ff 100%);
+  color: #08091a;
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.buttonSecondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.playArea {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 28px);
+  gap: 4px;
+  padding: 16px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.cell {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sidebar {
+  display: grid;
+  gap: 18px;
+  min-width: 200px;
+}
+
+.previewCard {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.previewLabel {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.previewGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 24px);
+  gap: 4px;
+  padding: 4px;
+  background: rgba(8, 9, 26, 0.8);
+  border-radius: 16px;
+}
+
+.previewCell {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hudText {
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #d8d8ff;
+  line-height: 1.55;
+}
+
+.gameOver {
+  margin-top: 22px;
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255, 77, 102, 0.12);
+  color: #ffdee2;
+}

@@ -47,7 +47,7 @@ export const GAMES = [
     plays: '3.9k',
     icon: 'A',
     hot: false,
-    available: false,
+    available: true,
   },
   {
     id: 5,
@@ -72,7 +72,7 @@ export const GAMES = [
     plays: '18.2k',
     icon: 'T',
     hot: false,
-    available: false,
+    available: true,
   },
   {
     id: 7,

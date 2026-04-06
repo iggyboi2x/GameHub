@@ -1,0 +1,136 @@
+.wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2.1rem, 2.8vw, 3rem);
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.statCard {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 120px;
+}
+
+.statLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.board {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 28px;
+  display: grid;
+  gap: 18px;
+}
+
+.scrambled {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.instructions {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.input {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button,
+.secondaryButton,
+.linkButton {
+  border: none;
+  border-radius: 14px;
+  min-height: 46px;
+  padding: 0 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button {
+  background: linear-gradient(135deg, #ff7b5a 0%, #ffd45a 100%);
+  color: #08091a;
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.linkButton {
+  background: transparent;
+  color: var(--pink);
+  padding: 0;
+  min-height: auto;
+  height: auto;
+  text-decoration: underline;
+}
+
+.feedback {
+  min-height: 24px;
+  color: #d8d8ff;
+}
+
+.answer {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(77, 183, 255, 0.12);
+  color: #d8f7ff;
+}
