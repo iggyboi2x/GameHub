@@ -42,7 +42,7 @@ export const GAMES = [
     id: 4,
     slug: 'anagram',
     title: 'Anagram',
-    desc: 'Unscramble the letters to find words',
+    desc: 'Find the anagram word from scrambled letters',
     category: 'Word',
     color: '#00E5FF',
     plays: '3.9k',

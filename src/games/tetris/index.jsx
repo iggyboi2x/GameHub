@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './Tetris.module.css';
 
 const GRID_WIDTH = 10;
@@ -16,6 +16,8 @@ const TETROMINOS = {
     rotations: [
       [[0, 1], [1, 1], [2, 1], [3, 1]],
       [[2, 0], [2, 1], [2, 2], [2, 3]],
+      [[0, 2], [1, 2], [2, 2], [3, 2]],
+      [[1, 0], [1, 1], [1, 2], [1, 3]],
     ],
   },
   O: {
@@ -56,6 +58,8 @@ const TETROMINOS = {
     rotations: [
       [[1, 0], [2, 0], [0, 1], [1, 1]],
       [[1, 0], [1, 1], [2, 1], [2, 2]],
+      [[1, 1], [2, 1], [0, 2], [1, 2]],
+      [[0, 0], [0, 1], [1, 1], [1, 2]],
     ],
   },
   Z: {
@@ -63,6 +67,8 @@ const TETROMINOS = {
     rotations: [
       [[0, 0], [1, 0], [1, 1], [2, 1]],
       [[2, 0], [1, 1], [2, 1], [1, 2]],
+      [[0, 1], [1, 1], [1, 2], [2, 2]],
+      [[1, 0], [0, 1], [1, 1], [0, 2]],
     ],
   },
 };
@@ -155,7 +161,7 @@ export default function TetrisGame() {
     gameOverRef.current = gameOver;
   }, [gameOver]);
 
-  const spawnNewPiece = (next) => {
+  const spawnNewPiece = useCallback((next) => {
     const nextBoard = boardRef.current;
     const spawn = START_POSITION;
     const initialCells = getPieceCells(next, spawn);
@@ -168,9 +174,9 @@ export default function TetrisGame() {
     setPosition(spawn);
     setNextPiece(getRandomPiece());
     return true;
-  };
+  }, []);
 
-  const lockPiece = () => {
+  const lockPiece = useCallback(() => {
     const cells = getPieceCells(pieceRef.current, positionRef.current);
     const merged = mergePiece(boardRef.current, cells);
     const { board: clearedBoard, cleared } = clearFinishedRows(merged);
@@ -185,9 +191,9 @@ export default function TetrisGame() {
     if (!spawnNewPiece(next)) {
       return;
     }
-  };
+  }, [nextPiece, spawnNewPiece]);
 
-  const stepDown = () => {
+  const stepDown = useCallback(() => {
     if (!playingRef.current || gameOverRef.current) {
       return;
     }
@@ -207,7 +213,7 @@ export default function TetrisGame() {
     }
 
     lockPiece();
-  };
+  }, [lockPiece]);
 
   useEffect(() => {
     if (!playing) {
@@ -217,9 +223,27 @@ export default function TetrisGame() {
     const interval = SPEED_LEVELS[speedRef.current].interval;
     const timer = window.setInterval(stepDown, interval);
     return () => window.clearInterval(timer);
-  }, [playing, speed]);
+  }, [playing, speed, stepDown]);
 
-  const handleKeyDown = (event) => {
+  const movePiece = useCallback((dx, dy) => {
+    const nextPos = { x: positionRef.current.x + dx, y: positionRef.current.y + dy };
+    const nextCells = getPieceCells(pieceRef.current, nextPos);
+    if (isValidPosition(nextCells, boardRef.current)) {
+      setPosition(nextPos);
+    }
+  }, []);
+
+  const rotatePiece = useCallback((direction = 1) => {
+    const nextRotation = (pieceRef.current.rotation + direction + TETROMINOS[pieceRef.current.type].rotations.length) % TETROMINOS[pieceRef.current.type].rotations.length;
+    const rotatedPiece = { ...pieceRef.current, rotation: nextRotation };
+    const cells = getPieceCells(rotatedPiece, positionRef.current);
+
+    if (isValidPosition(cells, boardRef.current)) {
+      setCurrentPiece(rotatedPiece);
+    }
+  }, []);
+
+  const handleKeyDown = useCallback((event) => {
     if (!playing || gameOver) {
       return;
     }
@@ -237,30 +261,12 @@ export default function TetrisGame() {
       event.preventDefault();
       actions[key]();
     }
-  };
+  }, [playing, gameOver, movePiece, rotatePiece, stepDown]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [playing, gameOver]);
-
-  const movePiece = (dx, dy) => {
-    const nextPos = { x: positionRef.current.x + dx, y: positionRef.current.y + dy };
-    const nextCells = getPieceCells(pieceRef.current, nextPos);
-    if (isValidPosition(nextCells, boardRef.current)) {
-      setPosition(nextPos);
-    }
-  };
-
-  const rotatePiece = (direction = 1) => {
-    const nextRotation = (pieceRef.current.rotation + direction + TETROMINOS[pieceRef.current.type].rotations.length) % TETROMINOS[pieceRef.current.type].rotations.length;
-    const rotatedPiece = { ...pieceRef.current, rotation: nextRotation };
-    const cells = getPieceCells(rotatedPiece, positionRef.current);
-
-    if (isValidPosition(cells, boardRef.current)) {
-      setCurrentPiece(rotatedPiece);
-    }
-  };
+  }, [handleKeyDown]);
 
   const resetGame = () => {
     setBoard(createEmptyBoard());
@@ -325,6 +331,7 @@ export default function TetrisGame() {
               className={styles.speedSelect}
               value={speed}
               onChange={(e) => setSpeed(e.target.value)}
+              disabled={!playing && !gameOver}
             >
               {Object.entries(SPEED_LEVELS).map(([key, value]) => (
                 <option key={key} value={key}>

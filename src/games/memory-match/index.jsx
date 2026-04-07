@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './MemoryMatch.module.css';
 
 const SYMBOLS = ['🐶', '🐱', '🦊', '🐰', '🦁', '🐼', '🐨', '🐸'];
@@ -37,21 +37,17 @@ export default function MemoryMatchGame() {
     const secondCard = cards.find((card) => card.id === secondId);
 
     if (firstCard && secondCard) {
-      if (firstCard.symbol === secondCard.symbol) {
-        setCards((prev) => prev.map((card) => (
-          card.id === firstId || card.id === secondId
-            ? { ...card, matched: true }
-            : card
-        )));
-        setMatchedCount((prev) => prev + 2);
-      }
+      const isMatch = firstCard.symbol === secondCard.symbol;
 
       const timeout = window.setTimeout(() => {
         setCards((prev) => prev.map((card) => (
           card.id === firstId || card.id === secondId
-            ? { ...card, revealed: card.matched || false }
+            ? { ...card, revealed: isMatch || false, matched: isMatch || card.matched }
             : card
         )));
+        if (isMatch) {
+          setMatchedCount((prev) => prev + 2);
+        }
         setActiveIds([]);
       }, 700);
 

@@ -14,7 +14,7 @@ export default function Navbar() {
       if (saved === 'light' || saved === 'dark') {
         return saved;
       }
-    } catch (error) {
+    } catch {
       // Ignore localStorage errors.
     }
 
@@ -25,7 +25,7 @@ export default function Navbar() {
     document.documentElement.setAttribute('data-theme', theme);
     try {
       localStorage.setItem('theme', theme);
-    } catch (error) {
+    } catch {
       // Ignore localStorage errors.
     }
   }, [theme]);

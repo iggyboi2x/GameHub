@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './2048.module.css';
 
 const GRID_SIZE = 4;
@@ -33,14 +33,15 @@ function getRandomPosition(occupied) {
   return emptyCells[Math.floor(Math.random() * emptyCells.length)];
 }
 
-function createStartingTiles(nextId) {
+function createStartingTiles() {
   const occupied = new Set();
   const tiles = [];
+  let id = 1;
 
   for (let i = 0; i < START_TILES; i += 1) {
     const { x, y } = getRandomPosition(occupied);
     occupied.add(`${x}-${y}`);
-    tiles.push(createTile(nextId.current++, 2, x, y, { isNew: true }));
+    tiles.push(createTile(id++, 2, x, y, { isNew: true }));
   }
 
   return tiles;
@@ -165,7 +166,7 @@ function canMakeMove(tiles) {
 
 export default function TwentyFortyEightGame() {
   const nextId = useRef(1);
-  const [tiles, setTiles] = useState(() => createStartingTiles(nextId));
+  const [tiles, setTiles] = useState(createStartingTiles);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
@@ -176,12 +177,12 @@ export default function TwentyFortyEightGame() {
 
   const restart = () => {
     nextId.current = 1;
-    setTiles(createStartingTiles(nextId));
+    setTiles(createStartingTiles());
     setScore(0);
     setGameOver(false);
   };
 
-  const addRandomTile = (nextTiles) => {
+  const addRandomTile = useCallback((nextTiles) => {
     const occupied = new Set(nextTiles.map((tile) => `${tile.x}-${tile.y}`));
     const { x, y } = getRandomPosition(occupied);
     const highestValue = getHighestTileValue(nextTiles);
@@ -190,23 +191,7 @@ export default function TwentyFortyEightGame() {
       ...nextTiles,
       createTile(nextId.current++, spawnValue, x, y, { isNew: true }),
     ];
-  };
-
-  const move = (direction) => {
-    if (gameOver) return;
-
-    const { tiles: movedTiles, moved, score: moveScore } = moveTiles(tiles, direction);
-    if (!moved) {
-      return;
-    }
-
-    const nextTiles = addRandomTile(movedTiles);
-    setTiles(nextTiles);
-    setScore((current) => current + moveScore);
-    if (!canMakeMove(nextTiles)) {
-      setGameOver(true);
-    }
-  };
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -215,12 +200,25 @@ export default function TwentyFortyEightGame() {
         return;
       }
       event.preventDefault();
-      move(direction);
+      
+      if (gameOver) return;
+
+      const { tiles: movedTiles, moved, score: moveScore } = moveTiles(tiles, direction);
+      if (!moved) {
+        return;
+      }
+
+      const nextTiles = addRandomTile(movedTiles);
+      setTiles(nextTiles);
+      setScore((current) => current + moveScore);
+      if (!canMakeMove(nextTiles)) {
+        setGameOver(true);
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [gameOver, tiles]);
+  }, [gameOver, tiles, addRandomTile]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {

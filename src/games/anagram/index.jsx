@@ -1,18 +1,18 @@
 import { useMemo, useState } from 'react';
 import styles from './Anagram.module.css';
 
-const WORDS = [
-  'planet',
-  'garden',
-  'mirror',
-  'forest',
-  'window',
-  'listen',
-  'danger',
-  'master',
-  'silver',
-  'stream',
-];
+const WORDS = ['earth', 'evil', 'form', 'note', 'part', 'post', 'rate', 'rise'];
+
+const ANAGRAMS = {
+  'earth': 'heart',
+  'evil': 'live',
+  'form': 'from',
+  'note': 'tone',
+  'part': 'trap',
+  'post': 'stop',
+  'rate': 'tear',
+  'rise': 'sire',
+};
 
 function shuffleWord(word) {
   const letters = [...word];
@@ -34,25 +34,27 @@ function getRandomWord(exclude) {
   return options[Math.floor(Math.random() * options.length)];
 }
 
-function isCorrectGuess(guess, word) {
-  return guess.trim().toLowerCase() === word.toLowerCase();
+function isCorrectGuess(guess, target) {
+  return guess.trim().toLowerCase() === target.toLowerCase();
 }
 
 export default function AnagramGame() {
   const [word, setWord] = useState(() => WORDS[Math.floor(Math.random() * WORDS.length)]);
   const [scrambled, setScrambled] = useState(() => shuffleWord(word));
+  const [target, setTarget] = useState(() => ANAGRAMS[word]);
   const [guess, setGuess] = useState('');
   const [feedback, setFeedback] = useState('');
   const [score, setScore] = useState(0);
   const [round, setRound] = useState(1);
   const [showAnswer, setShowAnswer] = useState(false);
 
-  const hint = useMemo(() => `${word[0].toUpperCase()}${'.'.repeat(word.length - 2)}${word[word.length - 1].toUpperCase()}`, [word]);
+  const hint = useMemo(() => `${target[0].toUpperCase()}${'.'.repeat(target.length - 2)}${target[target.length - 1].toUpperCase()}`, [target]);
 
   const nextWord = () => {
     const next = getRandomWord(word);
     setWord(next);
     setScrambled(shuffleWord(next));
+    setTarget(ANAGRAMS[next]);
     setGuess('');
     setFeedback('');
     setShowAnswer(false);
@@ -66,9 +68,9 @@ export default function AnagramGame() {
       return;
     }
 
-    if (isCorrectGuess(guess, word)) {
+    if (isCorrectGuess(guess, target)) {
       setScore((current) => current + 10);
-      setFeedback('Correct! Nice work.');
+      setFeedback('Correct! You found the anagram.');
     } else {
       setFeedback('Not quite — try again or reveal the answer.');
     }
@@ -76,7 +78,7 @@ export default function AnagramGame() {
 
   const handleReveal = () => {
     setShowAnswer(true);
-    setFeedback(`Answer: ${word}`);
+    setFeedback(`Answer: ${target}`);
   };
 
   return (
@@ -84,7 +86,7 @@ export default function AnagramGame() {
       <div className={styles.header}>
         <div>
           <h2 className={styles.title}>Anagram</h2>
-          <p className={styles.subtitle}>Rearrange the letters to guess the hidden word.</p>
+          <p className={styles.subtitle}>Find the anagram word from the scrambled letters.</p>
         </div>
         <div className={styles.stats}>
           <div className={styles.statCard}>
@@ -101,7 +103,7 @@ export default function AnagramGame() {
       <div className={styles.board}>
         <div className={styles.scrambled}>{scrambled}</div>
         <div className={styles.instructions}>
-          <p>Type the original word and press Submit.</p>
+          <p>Type the anagram word and press Submit.</p>
           <p>Hint: <strong>{hint}</strong></p>
         </div>
 
@@ -127,7 +129,7 @@ export default function AnagramGame() {
         <button type="button" className={styles.linkButton} onClick={handleReveal}>
           Reveal answer
         </button>
-        {showAnswer && <div className={styles.answer}>Answer: {word}</div>}
+        {showAnswer && <div className={styles.answer}>Answer: {target}</div>}
       </div>
     </div>
   );
