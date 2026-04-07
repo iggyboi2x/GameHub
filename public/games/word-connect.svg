@@ -1,0 +1,8 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="240" rx="32" fill="#8C56FF" />
+  <circle cx="68" cy="88" r="24" fill="#FFD166" />
+  <circle cx="132" cy="84" r="24" fill="#FF6B6B" />
+  <circle cx="96" cy="150" r="24" fill="#4ECDC4" />
+  <path d="M84 92 L126 90 M90 116 L104 142" stroke="#fff" stroke-width="10" stroke-linecap="round" />
+  <text x="120" y="200" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif" font-size="32" font-weight="700">LINK</text>
+</svg>

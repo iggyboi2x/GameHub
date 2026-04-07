@@ -10,6 +10,12 @@ import AnagramGame from './games/anagram/index';
 import TwentyFortyEightGame from './games/2048/index';
 import SpaceShooterGame from './games/space-shooter/index';
 import CrosswordGame from './games/crossword/index';
+import WordConnectGame from './games/word-connect/index';
+import WhackAMoleGame from './games/whack-a-mole/index';
+import MemoryMatchGame from './games/memory-match/index';
+import SudokuGame from './games/sudoku/index';
+import MinesweeperGame from './games/minesweeper/index';
+import DailyQuizGame from './games/daily-quiz/index';
 import './index.css';
 
 function GameShell({ children }) {
@@ -55,6 +61,30 @@ export default function App() {
         <Route
           path="/play/crossword"
           element={<GameShell><CrosswordGame /></GameShell>}
+        />
+        <Route
+          path="/play/word-connect"
+          element={<GameShell><WordConnectGame /></GameShell>}
+        />
+        <Route
+          path="/play/whack-a-mole"
+          element={<GameShell><WhackAMoleGame /></GameShell>}
+        />
+        <Route
+          path="/play/memory-match"
+          element={<GameShell><MemoryMatchGame /></GameShell>}
+        />
+        <Route
+          path="/play/sudoku"
+          element={<GameShell><SudokuGame /></GameShell>}
+        />
+        <Route
+          path="/play/minesweeper"
+          element={<GameShell><MinesweeperGame /></GameShell>}
+        />
+        <Route
+          path="/play/daily-quiz"
+          element={<GameShell><DailyQuizGame /></GameShell>}
         />
         <Route
           path="*"

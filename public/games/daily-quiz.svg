@@ -1,0 +1,8 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="240" rx="32" fill="#BF5FFF" />
+  <rect x="40" y="54" width="160" height="40" rx="16" fill="#fff" opacity="0.18" />
+  <rect x="40" y="112" width="160" height="40" rx="16" fill="#fff" opacity="0.18" />
+  <rect x="40" y="170" width="100" height="40" rx="16" fill="#fff" opacity="0.18" />
+  <circle cx="190" cy="185" r="20" fill="#fff" opacity="0.22" />
+  <text x="120" y="214" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif" font-size="30" font-weight="800">QUIZ</text>
+</svg>

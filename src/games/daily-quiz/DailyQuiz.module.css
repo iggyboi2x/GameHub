@@ -1,0 +1,108 @@
+.wrap {
+  padding: 28px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.statusCard {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-weight: 700;
+}
+
+.board {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.message {
+  margin-bottom: 18px;
+  color: var(--pink);
+  font-weight: 600;
+}
+
+.questionCard {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.questionCard h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.options {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.option {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  color: #fff;
+  text-align: left;
+}
+
+.selected {
+  background: rgba(255, 45, 120, 0.18);
+  border-color: var(--pink);
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.button,
+.secondaryButton {
+  border: none;
+  border-radius: 18px;
+  padding: 14px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button {
+  background: var(--pink);
+  color: #fff;
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.resultCard {
+  text-align: center;
+  padding: 26px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+}

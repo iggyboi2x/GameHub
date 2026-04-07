@@ -1,0 +1,6 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="240" rx="32" fill="#00E5FF" />
+  <rect x="36" y="36" width="168" height="168" rx="24" fill="#fff" opacity="0.16" />
+  <path d="M36 84 H204 M36 132 H204 M36 180 H204 M84 36 V204 M132 36 V204 M180 36 V204" stroke="#fff" stroke-width="6" opacity="0.38" />
+  <text x="120" y="216" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif" font-size="34" font-weight="800">SUDOKU</text>
+</svg>

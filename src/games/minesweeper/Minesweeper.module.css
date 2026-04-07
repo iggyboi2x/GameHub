@@ -1,0 +1,109 @@
+.wrap {
+  padding: 28px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 14px 18px;
+  border-radius: 18px;
+  min-width: 110px;
+}
+
+.statLabel {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.board {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.message {
+  margin-bottom: 18px;
+  color: var(--pink);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.cell {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.covered {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.safe {
+  background: rgba(46, 204, 113, 0.12);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.mine {
+  background: rgba(255, 83, 133, 0.18);
+  border: 1px solid rgba(255, 83, 133, 0.35);
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+.button {
+  border: none;
+  border-radius: 18px;
+  padding: 14px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--pink);
+  color: #fff;
+}

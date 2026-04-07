@@ -1,0 +1,7 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="240" rx="32" fill="#39FF14" />
+  <polygon points="120,44 164,132 76,132" fill="#fff" opacity="0.16" />
+  <circle cx="120" cy="156" r="28" fill="#fff" opacity="0.12" />
+  <path d="M100 152 L140 160 M100 160 L140 152" stroke="#4B4B4B" stroke-width="8" stroke-linecap="round" />
+  <text x="120" y="220" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif" font-size="30" font-weight="800">MINE</text>
+</svg>

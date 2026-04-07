@@ -1,0 +1,8 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="240" rx="32" fill="#00E5FF" />
+  <rect x="36" y="48" width="168" height="36" rx="18" fill="#fff" opacity="0.16" />
+  <rect x="30" y="110" width="180" height="36" rx="18" fill="#fff" opacity="0.16" />
+  <rect x="54" y="172" width="132" height="36" rx="18" fill="#fff" opacity="0.16" />
+  <text x="120" y="86" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif" font-size="36" font-weight="800">anagram</text>
+  <text x="120" y="212" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif" font-size="28" font-weight="700">SCRAMBLE</text>
+</svg>

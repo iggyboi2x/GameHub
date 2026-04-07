@@ -4,7 +4,7 @@ import GameCard from '../components/GameCard';
 import styles from './HomePage.module.css';
 
 const STATS = [
-  { label: 'Games', value: '12' },
+  { label: 'Games', value: '13' },
   { label: 'Players', value: '89k' },
   { label: 'Plays today', value: '3.2k' },
 ];
