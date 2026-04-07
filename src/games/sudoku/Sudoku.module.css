@@ -23,15 +23,16 @@
 }
 
 .statusCard {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg2);
   padding: 14px 18px;
   border-radius: 18px;
+  border: 1px solid var(--border);
   font-weight: 700;
 }
 
 .board {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg2);
+  border: 1px solid var(--border);
   border-radius: 24px;
   padding: 24px;
 }
@@ -56,10 +57,10 @@
 .cell {
   width: 100%;
   aspect-ratio: 1;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
+  background: var(--bg);
+  color: var(--text);
   text-align: center;
   font-size: 1.2rem;
   font-weight: 700;
@@ -68,11 +69,12 @@
 
 .cell:disabled {
   opacity: 0.75;
-  color: rgba(255,255,255,0.8);
+  color: var(--muted);
 }
 
 .correct {
   background: rgba(74, 222, 128, 0.2);
+  border-color: var(--green);
 }
 
 .controls {
@@ -92,10 +94,11 @@
 
 .button {
   background: var(--pink);
-  color: #fff;
+  color: var(--bg);
 }
 
 .secondaryButton {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: var(--bg2);
+  color: var(--text);
+  border: 1px solid var(--border);
 }

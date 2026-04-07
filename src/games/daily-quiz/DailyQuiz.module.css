@@ -23,15 +23,16 @@
 }
 
 .statusCard {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg2);
   padding: 14px 18px;
   border-radius: 18px;
+  border: 1px solid var(--border);
   font-weight: 700;
 }
 
 .board {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg2);
+  border: 1px solid var(--border);
   border-radius: 24px;
   padding: 24px;
 }
@@ -43,10 +44,11 @@
 }
 
 .questionCard {
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--bg);
   padding: 20px;
   border-radius: 20px;
   margin-bottom: 20px;
+  border: 1px solid var(--border);
 }
 
 .questionCard h3 {
@@ -61,18 +63,19 @@
 }
 
 .option {
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg2);
   cursor: pointer;
-  color: #fff;
+  color: var(--text);
   text-align: left;
 }
 
 .selected {
   background: rgba(255, 45, 120, 0.18);
   border-color: var(--pink);
+  color: var(--text);
 }
 
 .controls {
@@ -92,12 +95,13 @@
 
 .button {
   background: var(--pink);
-  color: #fff;
+  color: var(--bg);
 }
 
 .secondaryButton {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: var(--bg2);
+  color: var(--text);
+  border: 1px solid var(--border);
 }
 
 .resultCard {

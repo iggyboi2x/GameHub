@@ -18,12 +18,12 @@
 .title {
   font-size: 40px;
   font-weight: 800;
-  color: #FFB800;
+  color: var(--yellow);
 }
 
 .subtitle {
   margin-top: 8px;
-  color: rgba(0, 0, 0, 0.55);
+  color: var(--muted);
   max-width: 400px;
 }
 
@@ -53,8 +53,8 @@
   padding: 14px 18px;
   border-radius: 14px;
   border: none;
-  background: #FFB800;
-  color: #1a1a2e;
+  background: var(--yellow);
+  color: var(--bg);
   font-weight: 700;
 }
 
@@ -144,8 +144,9 @@
 .footer {
   padding: 18px 20px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg2);
   color: var(--muted);
+  border: 1px solid var(--border);
 }
 
 .gameOver {

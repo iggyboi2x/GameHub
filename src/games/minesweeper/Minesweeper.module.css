@@ -29,9 +29,10 @@
 }
 
 .statCard {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg2);
   padding: 14px 18px;
   border-radius: 18px;
+  border: 1px solid var(--border);
   min-width: 110px;
 }
 
@@ -43,8 +44,8 @@
 }
 
 .board {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg2);
+  border: 1px solid var(--border);
   border-radius: 24px;
   padding: 24px;
 }
@@ -79,18 +80,21 @@
 }
 
 .covered {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
 .safe {
   background: rgba(46, 204, 113, 0.12);
-  border: 1px solid rgba(46, 204, 113, 0.3);
+  border: 1px solid var(--green);
+  color: var(--green);
 }
 
 .mine {
   background: rgba(255, 83, 133, 0.18);
-  border: 1px solid rgba(255, 83, 133, 0.35);
+  border: 1px solid var(--pink);
+  color: var(--pink);
 }
 
 .controls {

@@ -23,9 +23,10 @@
 }
 
 .scoreCard {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg2);
   padding: 14px 20px;
   border-radius: 18px;
+  border: 1px solid var(--border);
   text-align: right;
 }
 
@@ -37,8 +38,8 @@
 }
 
 .board {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg2);
+  border: 1px solid var(--border);
   border-radius: 24px;
   padding: 24px;
 }
@@ -58,8 +59,9 @@
   flex-wrap: wrap;
   margin-bottom: 24px;
   padding: 18px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg);
   border-radius: 18px;
+  border: 1px solid var(--border);
 }
 
 .placeholder {
@@ -68,10 +70,10 @@
 
 .selectedTile,
 .tile {
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
+  background: var(--bg2);
+  color: var(--text);
   min-width: 48px;
   min-height: 48px;
   display: inline-flex;
