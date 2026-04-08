@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import GameLayout from '../../components/GameLayout';
 import styles from './Snake.module.css';
 
 const GRID_SIZE = 16;
@@ -178,17 +179,13 @@ export default function SnakeGame() {
   }, [snake, food]);
 
   return (
-    <div className={styles.wrap}>
-      <div className={styles.header}>
-        <div>
-          <h2 className={styles.title}>Snake</h2>
-          <p className={styles.subtitle}>Eat the food, grow longer, and avoid the walls.</p>
-        </div>
-        <div className={styles.panel}>
-          <div className={styles.scoreCard}>
-            <span className={styles.scoreLabel}>Score</span>
-            <strong>{score}</strong>
-          </div>
+    <GameLayout
+      title="Snake"
+      subtitle="Eat the food, grow longer, and avoid the walls."
+      score={score}
+      gameColor="#39FF14"
+      controls={
+        <>
           <div className={styles.speedSelector}>
             <label htmlFor="speed-select" className={styles.speedLabel}>Speed:</label>
             <select
@@ -216,23 +213,18 @@ export default function SnakeGame() {
           <button type="button" className={styles.button} onClick={resetGame}>
             Reset
           </button>
-        </div>
-      </div>
-
-      <div className={styles.board}>
-        {cells.map((type, index) => (
-          <div key={index} className={`${styles.cell} ${styles[type]}`}></div>
-        ))}
-      </div>
+        </>
+      }
+    >
 
       <div className={styles.footer}>
         <p>
           {started
-            ? 'Use arrow keys to change direction. Don’t hit the wall or your tail.'
+            ? 'Use arrow keys to change direction. Don\'t hit the wall or your tail.'
             : 'Select your speed, then press Start to begin.'}
         </p>
         {gameOver && <div className={styles.gameOver}>Game over — press Play Again or Reset.</div>}
       </div>
-    </div>
+    </GameLayout>
   );
 }

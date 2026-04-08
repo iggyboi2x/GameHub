@@ -21,6 +21,28 @@
   --purple: #8B5CF6;
   --orange: #FF8C00;
   --font: 'Inter', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
+
+  /* Spacing scale */
+  --sp-0: 0px;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 40px;
+  --sp-8: 48px;
+  --sp-9: 64px;
+  --sp-10: 80px;
+
+  /* Additional colors for better UX */
+  --bg-primary: var(--bg);
+  --bg-secondary: var(--bg2);
+  --hover: rgba(255, 45, 120, 0.05);
+  --pink-hover: #E6246B;
+  --error: #EF4444;
+  --success: #22C55E;
+  --warning: #F59E0B;
 }
 
 :root[data-theme="dark"] {
@@ -31,8 +53,14 @@
   --bg2-rgb: 17, 17, 32;
   --border: rgba(255, 255, 255, 0.08);
   --text: #ffffff;
-  --muted: rgba(255, 255, 255, 0.4);
+  --muted: rgba(255, 255, 255, 0.6);
   --hint: rgba(255, 255, 255, 0.2);
+
+  /* Additional colors for better UX */
+  --bg-primary: var(--bg);
+  --bg-secondary: var(--bg2);
+  --hover: rgba(255, 45, 120, 0.1);
+  --pink-hover: #E6246B;
 }
 
 html, body, #root {
@@ -50,6 +78,70 @@ body {
 button {
   font-family: var(--font);
   cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--hover);
+  border-color: var(--pink);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--pink);
+  color: white;
+  border-color: var(--pink);
+}
+
+.btn-primary:hover {
+  background: var(--pink-hover);
+  border-color: var(--pink-hover);
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--hover);
+  border-color: var(--pink);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+
+.catBtn:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
 }
 
 input {

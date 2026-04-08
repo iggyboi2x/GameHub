@@ -50,12 +50,37 @@
 }
 
 .button {
-  padding: 14px 18px;
-  border-radius: 14px;
-  border: none;
-  background: var(--green);
-  color: var(--bg);
-  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--pink);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--pink-hover);
+  border-color: var(--pink-hover);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button:disabled:hover {
+  background: var(--pink);
+  border-color: var(--border);
+  transform: none;
 }
 
 .speedSelector {

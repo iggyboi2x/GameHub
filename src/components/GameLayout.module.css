@@ -1,0 +1,186 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding: var(--sp-5) var(--sp-3);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--sp-5);
+  gap: var(--sp-4);
+}
+
+.titleSection {
+  flex: 1;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: var(--sp-2);
+  transition: color 0.2s ease;
+}
+
+.backButton:hover {
+  color: var(--text);
+}
+
+.titleInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.gameIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 var(--sp-1);
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--sp-2);
+}
+
+.scoreCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--sp-3) var(--sp-4);
+  text-align: center;
+  min-width: 100px;
+}
+
+.scoreLabel {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: var(--sp-1);
+}
+
+.scoreValue {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--pink);
+  display: block;
+}
+
+.controls {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+.gameContent {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: var(--sp-3);
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--sp-3);
+  }
+
+  .titleInfo {
+    gap: var(--sp-2);
+  }
+
+  .gameIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .stats {
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .scoreCard {
+    min-width: auto;
+    flex: 1;
+    text-align: left;
+    padding: var(--sp-2) var(--sp-3);
+  }
+
+  .scoreValue {
+    font-size: 20px;
+  }
+
+  .gameContent {
+    padding: var(--sp-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .titleInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-1);
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+
+  .controls {
+    justify-content: center;
+  }
+}
