@@ -80,7 +80,7 @@ export const GAMES = [
   {
     id: 7,
     slug: 'whack-a-mole',
-    title: 'Whack-a-Mole',
+    title: 'Tap-a-Mole',
     desc: 'Tap the moles before they vanish',
     category: 'Arcade',
     color: '#FF6B35',
@@ -132,8 +132,8 @@ export const GAMES = [
   {
     id: 11,
     slug: 'space-shooter',
-    title: 'Space Shooter',
-    desc: 'Fly, shoot enemies, and survive the wave',
+    title: 'Space Defender',
+    desc: 'Defend your ship from enemy waves',
     category: 'Arcade',
     color: '#00E5FF',
     plays: '7.5k',
